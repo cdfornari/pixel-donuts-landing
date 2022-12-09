@@ -1,23 +1,19 @@
 import { useContext } from 'react';
 import { Waypoint } from 'react-waypoint'
 import { CountryContext, SectionContext } from '../../context';
-import { JapaneseHero } from './hero/JapaneseHero';
-import { VenezuelanHero } from './hero/VenezuelanHero';
 import { Section } from './section.styled';
 
-export const HeroSection = () => {
+export const HistorySection = () => {
   const {setSection} = useContext(SectionContext)
   const {country} = useContext(CountryContext)
   return (
-    <section id='home'>
+    <section id='about-us'>
         <Section>
             <Waypoint
-                onEnter={() => setSection('')}
+                onEnter={() => setSection('about-us')}
             />
             {
-                country === 'vzla' ? 
-                <VenezuelanHero /> :
-                <JapaneseHero />
+                
             }
         </Section>
     </section>

@@ -2,7 +2,7 @@ import { styled } from '@nextui-org/react';
 
 export const Section = styled('div', {
     width: '100vw',
-    minHeight: 'calc(100vh - 200px)',
+    minHeight: 'calc(100vh)',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
