@@ -1,4 +1,4 @@
-import { HeroSection,HistorySection, LocationsSection, MenuSection } from '../components';
+import { Footer, HeroSection,HistorySection, LocationsSection, MenuSection } from '../components';
 import { MainLayout } from '../layouts';
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
       <MenuSection/>
       <HistorySection/>
       <LocationsSection/>
+      <Footer/>
     </MainLayout>
   )
 }

@@ -1,0 +1,1 @@
+export type Category = 'breakfast' | 'donuts' | 'coffee';

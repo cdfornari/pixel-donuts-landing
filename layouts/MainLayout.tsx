@@ -25,10 +25,10 @@ export const MainLayout: FC<Props> = ({children}) => {
           </FullScreenContainer>
         ) : (
           country ? (
-            <>
+            <div style={{width:'100vw'}}>
               <Navbar/>
               {children}
-            </>
+            </div>
           ) : (
             <FullScreenContainer>
               <CountrySelector/>

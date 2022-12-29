@@ -10,16 +10,16 @@ export const HeroSection = () => {
   const {country} = useContext(CountryContext)
   return (
     <section id='home'>
-        <Section>
-            <Waypoint
-                onEnter={() => setSection('')}
-            />
-            {
-                country === 'vzla' ? 
-                <VenezuelanHero /> :
-                <JapaneseHero />
-            }
-        </Section>
+      <Section>
+        <Waypoint
+          onEnter={() => setSection('')}
+        />
+        {
+          country === 'vzla' ? 
+          <VenezuelanHero /> :
+          <JapaneseHero />
+        }
+      </Section>
     </section>
   )
 }
