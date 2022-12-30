@@ -1,15 +1,22 @@
-import { FC } from 'react'
+import { FC, useContext } from 'react'
 import { Card, Row, Text } from '@nextui-org/react'
 import { Product } from '../../../models'
+import { ModalContext } from '../../../context'
 
 interface Props {
     product: Product
 }
 
 export const JapaneseProductCard: FC<Props> = ({product}) => {
+  const {setVisible, setProductSelected} = useContext(ModalContext)
   return (
     <Card 
       variant='flat' 
+      isPressable
+      onPress={() => { 
+        setVisible(true);
+        setProductSelected(product);
+      }}
       css={{
         position: "relative",
         w: 'fit-content',

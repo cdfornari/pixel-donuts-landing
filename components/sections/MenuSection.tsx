@@ -1,9 +1,10 @@
 import { Grid, Text } from '@nextui-org/react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Waypoint } from 'react-waypoint'
 import { SectionContext,CountryContext } from '../../context';
 import { categories, products } from '../../data';
 import { Carousel } from '../products';
+import { ProductModal } from '../products/modal/ProductModal';
 import { Section } from './section.styled';
 
 export const MenuSection = () => {
@@ -37,6 +38,7 @@ export const MenuSection = () => {
           }
         </Grid.Container>
       </Section>
+      <ProductModal/>
     </section>
   )
 }

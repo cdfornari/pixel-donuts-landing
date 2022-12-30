@@ -1,15 +1,22 @@
-import { FC } from 'react'
+import { FC,useContext } from 'react'
 import { Card, Text } from '@nextui-org/react';
 import { Product } from '../../../models'
+import { ModalContext } from '../../../context';
 
 interface Props {
     product: Product
 }
 
 export const VenezuelanProductCard: FC<Props> = ({product}) => {
+  const {setVisible, setProductSelected} = useContext(ModalContext);
   return (
     <Card
       isHoverable
+      isPressable
+      onPress={() => {
+        setVisible(true);
+        setProductSelected(product);
+      }}
       variant='bordered'
       css={{
         position: "relative",
