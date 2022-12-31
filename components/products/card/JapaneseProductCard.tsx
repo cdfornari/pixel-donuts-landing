@@ -15,6 +15,7 @@ export const JapaneseProductCard: FC<Props> = ({product}) => {
         w: 'fit-content',
         h: 'fit-content',
         borderRadius: 0,
+        cursor: 'pointer',
       }}
     >
       <Card.Body css={{ mb: 80 }}>

@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app'
 import localFont from '@next/font/local';
 import { globalCss } from '@nextui-org/react';
 import { ThemeProvider } from '../providers'
-import { CountryProvider, SectionProvider } from '../context'
+import { CountryProvider, SectionProvider, ShoppingCartProvider } from '../context'
 
 const donutFont = localFont({ 
   src: '../public/donut.otf',
@@ -19,13 +19,15 @@ export default function App({ Component, pageProps }: AppProps) {
   globalStyles();
   return(
     <CountryProvider>
-      <ThemeProvider>
-        <SectionProvider>
-          <main className={donutFont.variable}>
-            <Component {...pageProps} />
-          </main>
-        </SectionProvider>
-      </ThemeProvider>
+      <ShoppingCartProvider>
+        <ThemeProvider>
+          <SectionProvider>
+            <main className={donutFont.variable}>
+              <Component {...pageProps} />
+            </main>
+          </SectionProvider>
+        </ThemeProvider>
+      </ShoppingCartProvider>
     </CountryProvider>
   )
 }

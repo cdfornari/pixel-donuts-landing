@@ -30,7 +30,7 @@ export const JapaneseNavbar = () => {
           href='locations'
         />
       </Navbar.Content>  
-      <Navbar.Content>
+      <Navbar.Content css={{mr: '$10'}}>
         <ThemeSwitcher/>
         <CartButton/>
       </Navbar.Content>
