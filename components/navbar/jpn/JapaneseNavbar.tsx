@@ -5,10 +5,9 @@ import { JapaneseNavItem } from './JapaneseNavItem'
 export const JapaneseNavbar = () => {
   return (
     <Navbar
-      isCompact
-      variant='sticky'
+      variant='floating'
       isBordered
-      maxWidth='fluid'
+      height={90}
     >
       <Navbar.Brand>
         <Logo/>
