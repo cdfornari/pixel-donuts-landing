@@ -5,6 +5,7 @@ interface ContextProps {
     addProductToCart: (product: ShoppingCartItem) => void;
     updateProductQuantity: (product: ShoppingCartItem) => void;
     removeProduct: (product: ShoppingCartItem) => void;
+    clearCart: () => void;
     products: ShoppingCart;
 }
 

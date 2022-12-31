@@ -1,8 +1,8 @@
 import { FC, useContext, useEffect, useMemo } from 'react';
-import { Button, Modal, Text, Grid, Input, Radio, Spacer, Divider } from '@nextui-org/react'
+import { Button, Modal, Text, Grid, Input, Radio, Spacer, Divider, useTheme } from '@nextui-org/react'
 import { CountryContext, ShoppingCartContext } from '../../context';
 import { FaTrash } from 'react-icons/fa';
-import Image from 'next/image';
+import { Notification } from '../../notifications';
 
 interface Props {
   visible: boolean;
@@ -10,8 +10,9 @@ interface Props {
 }
 
 export const CheckoutModal: FC<Props> = ({visible, setVisible}) => {
+  const {isDark} = useTheme();
   const {country} = useContext(CountryContext)
-  const {products,removeProduct} = useContext(ShoppingCartContext)
+  const {products,removeProduct,clearCart} = useContext(ShoppingCartContext)
   useEffect(() => {
     if (products.length === 0)
       setVisible(false)
@@ -143,7 +144,13 @@ export const CheckoutModal: FC<Props> = ({visible, setVisible}) => {
                           auto
                           flat 
                           color='error'
-                          onPress={() => removeProduct(item)}
+                          onPress={() => {
+                            removeProduct(item)
+                            Notification(isDark).fire({
+                              icon: 'error',
+                              title: country === 'vzla' ? 'Producto Eliminado' : '商品が削除されました',
+                            })
+                          }}
                         >
                           <FaTrash/>
                         </Button>
@@ -167,6 +174,14 @@ export const CheckoutModal: FC<Props> = ({visible, setVisible}) => {
                       bordered
                       color='success' 
                       size='lg'
+                      onPress={()=>{
+                        setVisible(false)
+                        clearCart()
+                        Notification(isDark).fire({
+                          icon: 'success',
+                          title: country === 'vzla' ? `Pedido Realizado` : `注文が完了しました`,
+                        })
+                      }}
                     >
                       {country === 'vzla' ? `Comprar` : `注文を作成`} 
                     </Button>

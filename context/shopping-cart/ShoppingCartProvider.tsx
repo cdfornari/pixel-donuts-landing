@@ -69,6 +69,12 @@ export const ShoppingCartProvider: FC<Props> = ({children}) => {
             state.filter((cartItem) => cartItem.product.id !== product.product.id)
         ), {expires: 31});
     }
+    const clearCart = () => {
+        dispatch({
+            type: 'DELETE_CART'
+        })
+        Cookies.remove('cart');
+    }
     return (
         <ShoppingCartContext.Provider  
             value={{
@@ -76,6 +82,7 @@ export const ShoppingCartProvider: FC<Props> = ({children}) => {
                 addProductToCart,
                 updateProductQuantity,
                 removeProduct,
+                clearCart
             }}
         >
             {children}
