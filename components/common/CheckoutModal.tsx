@@ -159,7 +159,7 @@ export const CheckoutModal: FC<Props> = ({visible, setVisible}) => {
                   <Grid xs= {6} justify='center'>
                     <Text h3>
                       {country === 'vzla' ? `Precio Total:   $` : `合計金額   ¥`} 
-                      {total}
+                      {total.toFixed(2)}
                     </Text>
                   </Grid>
                   <Grid xs= {6} justify='center'>

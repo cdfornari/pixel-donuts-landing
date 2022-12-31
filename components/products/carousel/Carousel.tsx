@@ -22,7 +22,10 @@ export const Carousel: FC<Props> = ({title,products}) => {
     <>
       <Modal
         {...bindings}
-        onClose={() => setQuantity(1)}
+        onClose={() => {
+          setVisible(false)
+          setQuantity(1)
+        }}
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
