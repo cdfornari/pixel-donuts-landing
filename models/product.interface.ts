@@ -5,6 +5,7 @@ export interface Product {
     titleVE: string;
     titleJP: string;
     price: number;
+    priceYen: number;
     comparativePrice: number;
     image: string;
     category: Category;

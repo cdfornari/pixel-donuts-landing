@@ -41,32 +41,8 @@ export const JapaneseProductCard: FC<Props> = ({product}) => {
           fontSize: "$md",
           fontWeight: "$bold",
         }}>
-          ${product.price.toFixed(2)}
+          ¥{product.priceYen.toFixed(2)}
         </Text>
-        {
-          product.comparativePrice > product.price && (
-            <div style={{
-              display: 'flex'
-            }}>
-              <Text css={{
-                textDecorationLine: "line-through",
-                fontWeight: "$semibold",
-                fontSize: "$sm",
-                color: "$accents5",
-              }}>
-                ${product.comparativePrice.toFixed(2)}
-              </Text>
-              <Text css={{
-                ml: "$4",
-                color: "$success",
-                fontSize: "$sm",
-                fontWeight: "$semibold",
-              }}>
-                -{((product.comparativePrice-product.price)*100/product.comparativePrice).toFixed(2)}%
-              </Text>
-            </div>
-          )
-        }
       </Card.Footer>
     </Card>
   )
