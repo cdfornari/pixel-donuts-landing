@@ -2,15 +2,16 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FC, useContext, useState, useEffect } from 'react';
 import { Product } from '../../../models'
 import '@splidejs/react-splide/css';
-import { Text, Row, Image, Col, Grid, Card } from '@nextui-org/react';
+import { Text, Row, Image, Col, Grid, Card, Button } from '@nextui-org/react';
 import { CountryContext } from '../../../context/country/CountryContext';
 import { ItemCounter } from '../../ui/ItemCounter';
 
 interface Props{
+    editable?: boolean,
     products: Product[]
 }
 
-export const CarouselCartList: FC<Props> = ({products}) => {
+export const CarouselCartList: FC<Props> = ({editable = false, products}) => {
   const {country } = useContext(CountryContext)
   const [units, setUnits] = useState(1);
   useEffect(() => {
@@ -56,15 +57,40 @@ export const CarouselCartList: FC<Props> = ({products}) => {
                   />
                 </Row>
                 <Row justify='flex-start'>
-                  <Text h3>
-                    {country === 'vzla' ? `Total: $${product.price}` : `¥${product.price}`}
-                  </Text>
+                  <Col >
+                    <Text h3>
+                      {country === 'vzla' ? `Total: $${product.price}` : `¥${product.price}`}
+                    </Text>
+                  </Col>
+                  {
+                    editable && (
+                      <Button 
+                        light color="error" auto
+                        size={'lg'}                        
+                        //onClick={ () =>  }
+                      >
+                        Eliminar
+                      </Button>
+                    )
+                  }
                 </Row>
                 <Row justify='center'>
                   <Col>
                     <Text h3>{country === 'vzla' ? 'Cantidad:' : '単位'}</Text>
                   </Col>
-                  <ItemCounter count={units} maxValue={99} onChange={setUnits}/>
+                  {
+                    editable 
+                    ? (
+                      <ItemCounter 
+                        count={ 9 }
+                        maxValue={ 10 }
+                        onChange = { () => console.log('Viva')} 
+                      />
+                    )
+                      : (
+                          <Text h3>{ 5 }</Text> //Aqui va la cantidad de Productos
+                        )
+                  }
                 </Row>
               </Grid>
             </SplideSlide>
